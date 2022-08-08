@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Run/Debug Configurations</title>
+
+    <steps>
+        <step li="1">
+            <text>
+                <h1 class="stepTitle">
+                    Run/debug Configurations
+                </h1>
+                <p>
+                    You can run and debug code in Rider in different ways using run/debug configurations.
+                    This tutorial will help you get started.
+                </p>
+                <p>
+                    IMPORTANT NOTES:
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            Please follow the instructions, avoiding actions other than those suggested at each step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialRunConfigs"/>
+            <text>
+                <h1 class="stepTitle">
+                    What is a run/debug configuration?
+                </h1>
+                <p>
+                    Shortly speaking, it is a concept that describes a specific execution scenario.
+                    Having multiple run/debug configurations allows you to switch between different execution
+                    scenarions.
+                </p>
+                <img src="run_debug_config_location.png"/>
+                <p>
+                    Take a look at the top right corner of the Rider's window:
+                    <span class="menuItem">Default</span>
+                    is the currently selected run/debug configuration.
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialRunConfigs"/>
+            <text>
+                <h1 class="stepTitle">
+                    What is a run/debug configuration?
+                </h1>
+                <p>
+                    More specifically, a run/debug configuration is a set of properties that define how to execute your
+                    code,
+                    like a .NET Framework version, app arguments (for console apps), a URL to open
+                    (for web apps), and so on.
+                </p>
+                <ol>
+                    <li>
+                        Click <span class="menuItem">Default</span> and then
+                        <span class="menuItem">Edit Configurations…</span>
+                        to open the configuration dialog.
+                    </li>
+                    <li>
+                        Take a look at the configuration. It specifies:
+                        <ul>
+                            <li><span class="menuItem">Project to launch</span>: ConsoleApp
+                            </li>
+                            <li><span class="menuItem">Target Framework</span>: .NET 6.0
+                            </li>
+                            <li><span class="menuItem">Exe path</span>: which assembly should be run
+                            </li>
+                            <li><span class="menuItem">Program arguments</span>: we don't have any yet.
+                            </li>
+                            <li>Other settings…</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Note the extremely important <span class="menuItem">Before launch</span> settings.
+                        They specify what should be done before running the
+                        config. In our case, it's just <span class="menuItem">Build project</span>,
+                        but you can use them for much more complex scenarios, like
+                        running some external tool, another run/debug configuration, Gulp or Grunt, and many others.
+                    </li>
+                    <li>
+                        Close the configuration dialog.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="open_run_config.mp4" poster="open_run_config.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialRunConfigs"/>
+            <text>
+                <h1 class="stepTitle">
+                    What is a run/debug configuration?
+                </h1>
+                <p>
+                    Let's run the <span class="menuItem">Default</span> run/debug configuration to see how it works with
+                    our simple "Hello World" console app.
+                    As we saw at the previous step, the
+                    <span class="menuItem">Default</span>
+                    configuration is set up to run the project without any arguments.
+                </p>
+                <ol>
+                    <li>
+                        Click <span class="menuItem">Run</span> to run the selected configuration.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="run_default_run_config.mp4" poster="run_default_run_config.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="5">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialRunConfigs"/>
+            <text>
+                <h1 class="stepTitle">
+                    Multiple run/debug configurations
+                </h1>
+                <p>
+                    A project can have any number of run/debug configurations. Let's add a new run/debug configuration
+                    that runs
+                    our console app with the <code>DE</code> argument:
+                </p>
+                <ol>
+                    <li>
+                        Click <span class="menuItem">Default</span> and then
+                        <span class="menuItem">Edit Configurations…</span>
+                        to open the configuration dialog.
+                    </li>
+                    <li>
+                        Copy the <span class="menuItem">Default</span> configuration by clicking
+                        <span class="menuItem">Copy Configuration</span>.
+                    </li>
+                    <li>
+                        Rename the configuration to <span class="menuItem">Default DE</span>.
+                    </li>
+                    <li>
+                        Add the <span class="userInput">DE</span> argument to <span class="menuItem">Program
+                        arguments</span>.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">OK</span>.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="create_config_new_params.mp4" poster="create_config_new_params.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialRunConfigs"/>
+            <text>
+                <h1 class="stepTitle">
+                    Multiple run/debug configurations
+                </h1>
+                <p>
+                    The new <span class="menuItem">Default DE</span> configuration is added to the list of available
+                    configurations.
+                    Let's run all our configurations:
+                </p>
+                <ol>
+                    <li>
+                        Click the button to the left of the selected configuration and then click
+                        <span class="menuItem">Launch another configuration</span>.
+                    </li>
+                    <li>
+                        Make sure that we have both
+                        <span class="menuItem">Default</span>
+                        and
+                        <span class="menuItem">Default DE</span>
+                        in the list of docked configurations.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Run</span> next to each configuration to make sure they execute our
+                        code
+                        as intended.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="run_default_de_config.mp4" poster="run_default_de_config.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <text>
+                <h1 class="stepTitle">
+                    Various types of run/debug configurations
+                </h1>
+                <p>
+                    Depending on the application type, you can create various types of run/debug configs using the
+                    built-in
+                    templates. For example, let's add one more project to our solution: an ASP.NET Core web API
+                    application.
+                </p>
+                <ol>
+                    <li>
+                        In the context menu of the <span class="menuItem">RunDebugConfigTutorial</span> solution, select
+                        <span>Add | New Project...</span>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">ASP.NET Core Web Application</span>.
+                    </li>
+                    <li>
+                        Specify <span class="userInput">WebApp</span> as a
+                        <span class="menuItem">Project name</span>
+                        and click <span class="menuItem">Create</span>.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="add_new_project.mp4" poster="add_new_project.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="8">
+            <text>
+                <h1 class="stepTitle">
+                    Various types of run/debug configurations
+                </h1>
+                <p>
+                    Actually, we can configure and run ASP.NET Core projects using the
+                    <span class="menuItem">.NET Project</span>
+                    configuration type.
+                    However, Web apps are typically configured via <code>launchSettings.json</code> files, and there's
+                    a separate run/debug configuration template for that. It is called
+                    <span class="menuItem">.NET Launch Settings Profile</span>.
+                    Such configurations are created automatically when you create a project of the corresponding type.
+                </p>
+                <ol>
+                    <li>
+                        Click <span class="menuItem">Default DE</span> and then
+                        <span class="menuItem">Edit Configurations…</span>
+                        to open the configuration dialog.
+                    </li>
+                    <li>
+                        Expand the
+                        <span class="menuItem">.NET Launch Settings Profile</span>
+                        node on the left.
+                        This node contains all configurations of this type.
+                    </li>
+                    <li>
+                        You can see that two new configuations are created,
+                        <span class="menuItem">WebApp: IIS Express</span>
+                        and
+                        <span class="menuItem">WebApp</span>,
+                        according to the profiles in the <code>Properties\launchSettings.json</code> file.
+                    </li>
+                </ol>
+                <p>
+                    <img src="create_config_launch_profile.png"/>
+                    <!--          <video controls="">
+                                <source src="create_config_launch_profile.mp4" poster="create_config_launch_profile.png"/>
+                              </video>-->
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="9">
+            <text>
+                <h1 class="stepTitle">
+                    Various types of run/debug configurations
+                </h1>
+                <p>
+                    The result of running these new run/debug configurations is running the application using a local
+                    web server.
+                </p>
+                <ol>
+                    <li>
+                        Make sure the <span class="menuItem">WebApp: IIS Express</span> or
+                        <span class="menuItem">WebApp</span>
+                        configuration is selected on the toolbar.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Run</span> to run the selected configuration.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Stop</span> when finished.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="run_web_app_run_config.mp4" poster="run_web_app_run_config.png"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="10">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial! Take a look at other tutorials that cover
+                    basic Rider functionality.
+                </p>
+                <button id="backButton">Back</button>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>

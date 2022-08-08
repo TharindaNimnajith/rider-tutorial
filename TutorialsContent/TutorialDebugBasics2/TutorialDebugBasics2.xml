@@ -1,0 +1,569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Debugging Basics Part II</title>
+
+    <steps>
+        <step li="1">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialDebugBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Debugging Basics Part II
+                </h1>
+                <p>
+                    In this tutorial, you will learn more advanced debugging techniques, like how to debug exceptions,
+                    debug
+                    third-party assemblies, use conditional breakpoints, and more. Let's start!
+                </p>
+                <p>
+                    IMPORTANT NOTES:
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialDebugBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Debugging exceptions
+                </h1>
+                <p>
+                    In our example, the application throws an exception during the execution:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>Run</shortcut> or click
+                        <span class="menuItem">Run</span>
+                        on the toolbar to laucnch the application.
+                    </li>
+                    <li>
+                        Check the output in the <span class="menuItem">Run</span> window.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s2_run_program.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3">
+            <text>
+                <h1 class="stepTitle">
+                    Debugging exceptions
+                </h1>
+                <p>
+                    To debug an exception of a particular type, you need to create a special exception breakpoint.
+                    Unlike line
+                    breakpoints, exception breakpoints are assigned not to a certain line of code, but to a certain
+                    exception
+                    type. Let's create a breakpoint for <code>ApplicationException</code>:
+                </p>
+                <ol>
+                    <li>
+                        In the main menu, select
+                        <span class="menuItem">Run | Stop on Exception...</span>
+                    </li>
+                    <li>
+                        In the dialog that opens, start typing
+                        <span class="userInput">ApplicationException</span>
+                        and then select the matching item.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Add breakpoint</span>.
+                    </li>
+                    <li>
+                        Check the properties of the newly created breakpoint in the
+                        <span class="menuItem">Breakpoints</span>
+                        dialog and click
+                        <span class="menuItem">Done</span>.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s3a_debugging_exceptions.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4">
+            <text>
+                <h1 class="stepTitle">
+                    Debugging exceptions
+                </h1>
+                <p>
+                    Now, let's start debugging:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>Debug</shortcut> or click
+                        <span class="menuItem">Debug</span>
+                        on the toolbar.
+                    </li>
+                    <li>
+                        Explore the stacktrace by switching frames in the
+                        <span class="menuItem">Debug</span>
+                        window and try to find where the exception originates.
+                    </li>
+                </ol>
+                <p>
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="s3c_debugging_exceptions.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="5">
+            <text>
+                <h1 class="stepTitle">
+                    Conditional breakpoints
+                </h1>
+                <p>
+                    As we saw, the exception is thrown when a string passed to <code>PrintPrice()</code> is empty,
+                    but we failed to find which product returned the empty string. Let's try
+                    out one more debugger feature called <strong>conditional breakpoints</strong>.
+                    It will help us pause program execution before <code>PrintPrice()</code> is called but
+                    only when the string is empty:
+                </p>
+                <ol>
+                    <li>
+                        Create a breakpoint on line 76 <code>PrintPrice(product...</code>:
+                        <br/>
+                        either click the left gutter near the line or put the cursor on line 76
+                        and press <shortcut>ToggleLineBreakpoint</shortcut>.
+                    </li>
+                    <li>
+                        Right-click the breakpoint icon. This will open breakpoint properties.
+                    </li>
+                    <li>
+                        In the breakpoint properties, specify the condition:
+                        <br/>
+                        <code>product.Name == ""</code>
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Done</span>.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s6a_conditional_breakpoints.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6">
+            <text>
+                <h1 class="stepTitle">
+                    Conditional breakpoints
+                </h1>
+                <p>
+                    Let's start debugging again:
+                </p>
+                <ol>
+                    <li>
+                        If the previous debugging session is still active, click
+                        <span class="menuItem">Stop</span>
+                        on the toolbar.
+                    </li>
+                    <li>
+                        Press <shortcut>Debug</shortcut> or click
+                        <span class="menuItem">Debug</span>
+                        on the toolbar.
+                    </li>
+                    <li>
+                        Note that the breakpoint stops the execution only when the condition is met.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s6c_conditional_breakpoints.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <text>
+                <h1 class="stepTitle">
+                    Interacting with the program
+                </h1>
+                <p>
+                    You can interfere program execution by executing arbitrary statements in the
+                    <span class="menuItem">Immediate</span>
+                    window. Let's use it to explore ways of dealing with problematic code.
+                </p>
+                <p>
+                    We know now that calling <code>PrintPrice()</code> when the product name is empty
+                    will end the program with the exception.
+                    However, we can safely call this function in the
+                    <span class="menuItem">Immediate</span>
+                    window, which will execute it in its own context without changing the program state.
+                    Otherwise, the execution will go as usual, it will even stop at breakpoints.
+                </p>
+                <ol>
+                    <li>
+                        Set a brekpoint at line 82 inside the
+                        <code>PrintPrice()</code>
+                        method.
+                    </li>
+                    <li>
+                        Copy the <code>PrintPrice()</code> call to the
+                        <span class="menuItem">Immediate</span>
+                        window and press
+                        <shortcut>EditorEnter</shortcut>.
+                    </li>
+                    <li>
+                        Note that there are new stack frames for the funtion evaluation.
+                    </li>
+                    <li>
+                        Press <shortcut>Resume</shortcut> or click
+                        <span class="menuItem">Resume Program</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        We see that the call throws exception as expected.
+                    </li>
+                    <li>
+                        Resume the program once again.
+                    </li>
+                    <li>
+                        Note that the program is back to its original state,
+                        it is still paused at line 76 before the <code>PrintPrice()</code> call.
+                    </li>
+                    <li>
+                        The execution result from the
+                        <span class="menuItem">Immediate</span>
+                        window stays available in the special
+                        <code>$result</code>
+                        variable.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s7a_immediate_window.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="8">
+            <text>
+                <h1 class="stepTitle">
+                    Changing execution flow
+                </h1>
+                <p>
+                    What if we want to jump over this exception and see how the program executes till the end?
+                    No problem, you can change the execution flow using <span class="menuItem">Skip to Cursor</span>:
+                </p>
+                <ol>
+                    <li>
+                        Set the cursor right after the line that throws the exception - at line 77.
+                    </li>
+                    <li>
+                        Press <shortcut>JumpToStatement</shortcut>, click
+                        <span class="menuItem">More | Skip to Cursor</span>
+                        in the <span class="menuItem">Debug</span> window, click
+                        <span class="menuItem">Skip to Here</span>
+                        button that floats at the current line,
+                        or just drag the exectuion pointer.
+                    </li>
+                </ol>
+                <p>
+                    The program goes to line 77 ignoring the
+                    <code>PrintPrice()</code>
+                    call in line 76 and the exception that it throws.
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="s9a_changing_execution_flow.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="9">
+            <text>
+                <h1 class="stepTitle">
+                    Changing execution flow
+                </h1>
+                <p>
+                    Let's resume the program to ensure that it works till the end without throwing the exception:
+                </p>
+                <ol>
+                    <li>
+                        Remove the brekpoint at line 82 inside the
+                        <code>PrintPrice()</code>
+                        method so that other calls in the loop do not pause the program there.
+                    </li>
+                    <li>
+                        Switch to the <span class="menuItem">Console</span> tab of the
+                        <span class="menuItem">Debug</span>
+                        window.
+                    </li>
+                    <li>
+                        Press <shortcut>Resume</shortcut> or click
+                        <span class="menuItem">Resume Program</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s9b_changing_execution_flow.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="10">
+            <text>
+                <h1 class="stepTitle">
+                    Breakpoints window
+                </h1>
+                <p>
+                    We've created a couple of breakpoints. Is it possible to see all the created breakpoints in one
+                    place and edit
+                    them if needed? Yes, the place is the <span class="menuItem">Breakpoints</span> window:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>ViewBreakpoints</shortcut> or click
+                        <span class="menuItem">View Breakpoints and Exceptions</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Take a look at the line and exception breakpoints that we created at previous steps.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s11_breakpoints_window.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="11">
+            <text>
+                <h1 class="stepTitle">
+                    Breakpoints window
+                </h1>
+                <p>
+                    In the <span class="menuItem">Breakpoints</span> window, you can create, delete, and edit
+                    breakpoints.
+                    For example, we temporarily do not need our line breakpoint. Let's disable it:
+                </p>
+                <ol>
+                    <li>
+                        Select the breakpoint on the left.
+                    </li>
+                    <li>
+                        Clear the <span class="menuItem">Enabled</span> checkbox in the breakpoint settings.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Done</span>.
+                    </li>
+                    <li>
+                        Note that the disabled breakpoint has another gutter icon.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s12_breakpoints_window.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="12">
+            <text>
+                <h1 class="stepTitle">
+                    Smart Step Into
+                </h1>
+                <p>
+                    There's one more debugger feature that's worth a look. It's called <strong>Smart Step Into</strong>.
+                    If a line contains several nested calls, Rider lets you choose a call to step into.
+                    Let's try it in action:
+                </p>
+                <ol>
+                    <li>
+                        Set a breakpoint on line 75
+                        <br/>
+                        <code>var total = ...</code>
+                    </li>
+                    <li>
+                        Start debugging and let the program stop at the breakpoint.
+                    </li>
+                    <li>
+                        Press <shortcut>SmartStepInto</shortcut> or click
+                        <span class="menuItem">More | Smart Step Into</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Now, you're able to choose one of the nested calls to step into.
+                        <br/>
+                        You can press
+                        <shortcut>EditorTab</shortcut>
+                        to switch step targets or just click the desired one.
+                    </li>
+                    <li>
+                        Step into <code>Utils.CalculatePriceWithVat()</code>.
+                    </li>
+                    <li>
+                        Step over the code until you return to the initiall call.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s13_smart_step_into.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="13">
+            <text>
+                <h1 class="stepTitle">
+                    Customizing object presentation
+                </h1>
+                <p>
+                    So far we have established that the cause of the program failure is a product with empty name.
+                    Wouldn't it be helpful if the debugger showed objects of the type
+                    <code>Product</code>
+                    by their
+                    <code>Name</code>
+                    property instead of the plain class name?
+                    Sure, Rider lets you choose which properties should be dispayed.
+                </p>
+                <ol>
+                    <li>
+                        Find a product object in the <span class="menuItem">Debug</span> window, expand it,
+                        and click the flag icon next to its
+                        <code>Name</code>
+                        property.
+                    </li>
+                    <li>
+                        Note how the object presentation changes.
+                    </li>
+                    <li>
+                        Resume program exectution to see new objects being iterated in the <code>foreach</code> loop.
+                    </li>
+                    <li>
+                        Now, we know when to stop if the product's name is empty.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s14_pin_to_top.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="14">
+            <text>
+                <h1 class="stepTitle">
+                    Debugging third-party code
+                </h1>
+                <p>
+                    But what about the <code>Math.Round()</code> call, can we really step into a third-party assembly
+                    (system
+                    assembly in this
+                    case) and debug it? With Rider, yes, we can! The ability to debug external code can be super-helpful
+                    when you
+                    suspect a bug is in an external library, or when this library throws an exception:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>SmartStepInto</shortcut> or click
+                        <span class="menuItem">More | Smart Step Into</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Step into <code>Math.Round()</code>. Once Rider decompiles the system assembly, you will be able
+                        to debug
+                        it.
+                    </li>
+                    <li>
+                        Step through the code to see how it works.
+                        <br/>
+                        To return to the original call, press <shortcut>StepOut</shortcut> or click
+                        <span class="menuItem">Step Out</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                </ol>
+                <p>
+                    Note: The <span class="menuItem">Enable external source debug</span> option must be selected
+                    on the <span class="menuItem">Build, Execution, Deployment | Debugger</span> page of Rider settings.
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="s15_debugging_external_code.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="15">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial! Take a look at other tutorials that cover
+                    basic Rider functionality.
+                </p>
+                <button id="backButton">Back</button>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>

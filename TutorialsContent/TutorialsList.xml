@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<tutorials>
+
+    <tutorial id="1" title="Rider Editor Essentials" solutionFolder="Tutorials\T1" solutionFile="Essentials.sln"
+              contentFolder="TutorialsContent\TutorialEditorBasics" contentFile="TutorialEditorBasics.xml"
+              afterSolutionLoad="">
+        This tutorial will acquaint you with the basic Rider code editing capabilities and shortcuts.
+    </tutorial>
+
+    <tutorial id="2" title="Run/Debug Configurations" solutionFolder="Tutorials\T2"
+              solutionFile="RunDebugConfigTutorial.sln"
+              contentFolder="TutorialsContent\TutorialRunConfigs" contentFile="TutorialRunConfigs.xml"
+              afterSolutionLoad="">
+        This tutorial will acquaint you with run/debug configurations: a concept used by Rider to
+        help you run and debug your programs.
+    </tutorial>
+
+    <tutorial id="3" title="Debugging Basics I" solutionFolder="Tutorials\T3"
+              solutionFile="DebugBasics.sln"
+              contentFolder="TutorialsContent\TutorialDebugBasics" contentFile="TutorialDebugBasics.xml"
+              afterSolutionLoad="">
+        This tutorial will acquaint you with debugging basics: how to set breakpoints, run a debug session, step through
+        code,
+        evaluate expressions, and add watches.
+    </tutorial>
+
+    <tutorial id="4" title="Debugging Basics II" solutionFolder="Tutorials\T4"
+              solutionFile="DebugBasics.sln"
+              contentFolder="TutorialsContent\TutorialDebugBasics2" contentFile="TutorialDebugBasics2.xml"
+              afterSolutionLoad="">
+        This is the second tutorial on debugging basics. Here you will learn how to debug exceptions, external code, use
+        conditional breakpoints and the 'smart step into' feature.
+    </tutorial>
+
+    <tutorial id="10" title="VCS Basics" solutionFolder="Tutorials\T10"
+              solutionFile="VCSBasics.sln"
+              contentFolder="TutorialsContent\TutorialVcsBasics" contentFile="TutorialVcsBasics.xml"
+              afterSolutionLoad="">
+        This tutorial will help you get started with the Rider's version control client.
+        You will learn how to create a Git repository, commit and explore changes,
+        and also how to share you work using GitHub.
+    </tutorial>
+
+    <tutorial id="11" title="" solutionFolder="Tutorials\T11"
+              solutionFile="Sandbox.sln"
+              contentFolder="TutorialsContent\TutorialUnitTesting" contentFile="TutorialUnitTesting.xml"
+              afterSolutionLoad="">
+        In this tutorial you will learn how to add unit tests to your code, execute them, and analyze their resutls.
+    </tutorial>
+
+    <tutorial id="23" title="Rider Tips. Typing Assistance" solutionFolder="Tutorials\T23"
+              solutionFile="RdTips1.sln"
+              contentFolder="TutorialsContent\TutorialTips1" contentFile="TutorialTips1.xml" afterSolutionLoad="">
+        This tutorial contains tips and tricks on how to make your work even more productive with typing assists and
+        some other features.
+    </tutorial>
+
+</tutorials>
+
+

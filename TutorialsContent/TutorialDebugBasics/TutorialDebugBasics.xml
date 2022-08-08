@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Debugging Basics Part I</title>
+
+    <steps>
+        <step li="1">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialDebugBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Debugging Basics Part I
+                </h1>
+                <p>
+                    What is debugging?
+                    Simply put, debugging is a way to find proplems in code by pausing the execution and analyzing the
+                    program state when it is paused.
+                    In Rider, you use run/debug configurations to define what should be executed and how.
+                    A typical debugging workflow includes the following steps:
+                </p>
+                <p>
+                    <ul>
+                        <li>Define a run/debug configuration.</li>
+                        <li>Set breakpoints in source code where potential problem may lie.</li>
+                        <li>Start a debugging session.</li>
+                        <li>When the program execution breaks, step through your code, evaluate expressions, and set
+                            watches.
+                        </li>
+                        <li>Resume the debugging session to let the program run to the next
+                            breakpoint, if any.
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    IMPORTANT NOTES:
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialDebugBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Selecting a run/debug configuration
+                </h1>
+                <p>
+                    We have a simple application that calculates product prices including taxes. It's a .NET
+                    application,
+                    that has an associated default .NET Project run configuration. We will use it for running and
+                    debugging the
+                    application.
+                </p>
+                <ol>
+                    <li>
+                        Select the <span class="menuItem">Default</span> configuration.
+                    </li>
+                    <li>
+                        Run the configuration using the <span class="menuItem">Run 'Default'</span> button
+                        to check the output.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s2_select_config_and_run.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3">
+            <text>
+                <h1 class="stepTitle">
+                    Setting a breakpoint
+                </h1>
+                <p>
+                    Suppose we suspect the numbers aren't correct and we want to understand how the calculations are
+                    made.
+                    Debugging our program will help us with this.
+                    The first thing we have to do is to set a breakpoint: a place in code where we want our program to
+                    pause execution. In our program, all calculation results are shown by the
+                    <code>ShowPricesWithVat</code>
+                    method, so, let's put a breakpoint on the first line
+                    of this method:
+                </p>
+                <ol>
+                    <li>
+                        Click the left gutter next to line 69 or put the cursor on line 69 and
+                        press <shortcut>ToggleLineBreakpoint</shortcut>.
+                    </li>
+                    <li>
+                        Start debugging by clicking <span class="menuItem">Debug</span> on the toolbar.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s3_setting_breakpoint.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4">
+            <text>
+                <h1 class="stepTitle">
+                    The Debug window
+                </h1>
+                <p>
+                    After we start debugging, the program stops at the breakpoint. To examine the state of the paused
+                    program,
+                    we use the <span class="menuItem">Debug</span> window.
+                    When our program calls a function, the CLR runtime generates the call data for that function
+                    (function location, call arguments, local variables, etc.) and puts these data on the call stack of
+                    the specific thread.
+                    The debugger shows the call data using call frames:
+                    <ol>
+                        <li>
+                            Examine the <span class="menuItem">Debug</span> window:
+                            <ul>
+                                <li>The current thread is selected in the left split.</li>
+                                <li>The next split shows all frames on the call stack of the selected thread.</li>
+                                <li>The right part of the window shows current values: call arguments, local variables,
+                                    watches, expressions.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Select the frame that corresponds to the
+                            <code>Program.Main()</code>
+                            call and see how the debugger context changes.
+                        </li>
+                        <li>
+                            Return back to the <code>Program.ShowPricesWithVat()</code> frame.
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="s4_debug_window.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="5">
+            <text>
+                <h1 class="stepTitle">
+                    Stepping over code
+                </h1>
+                <p>
+                    During debugging we step through the program to examine the program state at various execution
+                    points.
+                    There are two main ways you can step through code:
+                    <ul>
+                        <li>
+                            <span class="menuItem">Step Into</span>
+                            <shortcut>StepInto</shortcut>:
+                            if a line of code calls a function, debugger will initialize a call frame for that function
+                            and stop at the beginning of this function.
+                        </li>
+                        <li>
+                            <span class="menuItem">Step Over</span>
+                            <shortcut>StepOver</shortcut>:
+                            if you're not interested in the function, debugger will fully execute the call and stop at
+                            the next statement.
+                        </li>
+                    </ul>
+                    Let's try both!
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6">
+            <text>
+                <h1 class="stepTitle">
+                    Stepping over code
+                </h1>
+                <p>
+                    Let's begin with stepping over the <code>Utils.CalculateVat</code> function:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>StepOver</shortcut> or click the <span class="menuItem">Step Over</span> button
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Step over the code until the execution point reaches line 75
+                        <br/>
+                        <code>Console.WriteLine(...</code>
+                        <br/>
+                        While stepping over the code, notice how values change in the <span class="menuItem">Debug
+                    </span> window.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s6a_step_over_code.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <text>
+                <h1 class="stepTitle">
+                    Stepping over code
+                </h1>
+                <ol>
+                    <li>
+                        Examine variable values in the right tab of the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Note that the values are shown not only in the
+                        <span class="menuItem">Debug</span>
+                        window, but also right in the editor next to the corresponding statements.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s6b_step_over_code.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="8">
+            <text>
+                <h1 class="stepTitle">
+                    Stepping over code
+                </h1>
+                <ol>
+                    <li>
+                        Press <shortcut>StepOver</shortcut> or click the <span class="menuItem">Step Over</span> button
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Step over the code until the execution enters the loop the second time and reaches line 73
+                        <br/>
+                        <code>var vat = Utils...</code>
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s6c_step_over_code.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="9">
+            <text>
+                <h1 class="stepTitle">
+                    Stepping into code
+                </h1>
+                <p>
+                    Now, let's step into the
+                    <code>Utils.CalculateVat()</code>
+                    function to see how it works:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>StepInto</shortcut> or click the <span class="menuItem">Step Into</span> button
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Step over the code in the function until the execution point returns back to the line 73
+                        <br/>
+                        <code>var vat = Utils...</code>
+                        <br/>
+                        While stepping inside the <code>Utils.CalculateVat()</code>, examine the argument and variable
+                        values.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s9_step_into_code.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="10">
+            <text>
+                <h1 class="stepTitle">
+                    Resuming program
+                </h1>
+                <p>
+                    At any time, you can resume program execution. The program will
+                    run till the next breakpoint, if any. Let's create a breakpoint inside the
+                    <code>Utils.CalculateVat()</code>
+                    and check how it works:
+                </p>
+                <ol>
+                    <li>
+                        Add a new breakpoint at the line 36
+                        <br/>
+                        <code>if (category == ...</code>
+                    </li>
+                    <li>
+                        Press <shortcut>Resume</shortcut> or click
+                        <span class="menuItem">Resume Program</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                </ol>
+                <p>
+                    The program will resume execution and then stop at our newly created breakpoint.
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="s10_resuming_program.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="11">
+            <text>
+                <h1 class="stepTitle">
+                    Evaluating expressions
+                </h1>
+                <p>
+                    During debugging, you can evaluate any expression in the context of the current call frame.
+                    Say, we want to evaluate the condition inside our <code>if</code> block:
+                </p>
+                <ol>
+                    <li>
+                        To evaluate the value of a variable or an operator, hover the mouse over it.
+                    </li>
+                    <li>
+                        Select the expression <code>category == Category.Grocery</code>.
+                    </li>
+                    <li>
+                        Press <shortcut>EvaluateExpression</shortcut> or select
+                        <span class="menuItem">Evaluate Expression</span>
+                        from the context menu.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">Evaluate</span>.
+                    </li>
+                    <li>
+                        To evaluate <strong>any</strong> arbitrary expression, type it in the
+                        <span class="menuItem">Expression</span>
+                        field and click
+                        <span class="menuItem">Evaluate</span>.
+                        The only requirement here is that variables you use must exist in the current frame.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s11_evaluate_expressions.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="12">
+            <text>
+                <h1 class="stepTitle">
+                    Adding watches
+                </h1>
+                <p>
+                    If you're interested in how a particular expression changes during program execution, you can add it
+                    to
+                    <span class="menuItem">Watches</span>.
+                    Watches are shown together with local variables and updated at each step.
+                    Let's add our expression to <span class="menuItem">Watches</span>:
+                </p>
+                <ol>
+                    <li>
+                        Select the expression <code>category == Category.Grocery</code> and then choose
+                        <span class="menuItem">Add to Watches</span>
+                        from the context menu, or alternatively choose
+                        <span class="menuItem">Add to Watches</span>
+                        from the context menu of the
+                        <span class="menuItem">Evaluate</span>
+                        dialog.
+                    </li>
+                    <li>
+                        Press <shortcut>Resume</shortcut> or click the <span class="menuItem">Resume Program</span> button
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                    <li>
+                        Notice how the watched value changes.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s12_add_to_watches.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="13">
+            <text>
+                <h1 class="stepTitle">
+                    Running to specific line
+                </h1>
+                <p>
+                    Is it possible to pause the program at a particular line of code without setting a breakpoint? Yes,
+                    via the
+                    <span class="menuItem">Run to Cursor</span>
+                    <shortcut>RunToCursor</shortcut>
+                    /
+                    <span class="menuItem">Run to Cursor Non-Stop</span>
+                    <shortcut>ForceRunToCursor</shortcut>.
+                    'Non-Stop' means that the debugger will ignore all breakpoints "on the road" to the target line.
+                    Let's try it out:
+                </p>
+                <ol>
+                    <li>
+                        Place the caret at line 41
+                        <br/>
+                        <code>return result;</code>
+                    </li>
+                    <li>
+                        Press <shortcut>RunToCursor</shortcut>, click
+                        <span class="menuItem">Run to Here</span>
+                        button that floats at the current line or click
+                        <span class="menuItem">More | Run to Cursor</span>
+                        in the <span class="menuItem">Debug</span> window.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s13_run_to_cursor.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="14">
+            <text>
+                <h1 class="stepTitle">
+                    Stopping debugging
+                </h1>
+                <p>
+                    When the debugging session is over, you can simply stop it:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>Stop</shortcut> or click <span class="menuItem">Stop</span> in
+                        the <span class="menuItem">Debug</span> window or on the toolbar.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="s14_stop_debugging.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="15">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial! Take a look at other tutorials that cover
+                    basic Rider functionality.
+                </p>
+                <button id="backButton">Back</button>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>

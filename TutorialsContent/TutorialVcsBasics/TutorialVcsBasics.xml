@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>VCS Basics</title>
+
+    <steps>
+        <step li="1">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    VCS Basics
+                </h1>
+                <p>
+                    Rider includes a full-fledged VCS client that supports all major version control systems.
+                    Let's take Git as an example and walk through basic VCS features -
+                    we'll create a local Git repository for our solution, start tracking changes in our code,
+                    and then associate it with a remote repository so that our solution becomes available to other
+                    contributors.
+                </p>
+                <p>
+                    <b>IMPORTANT NOTES:</b>
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Get Git
+                </h1>
+                <p>
+                    If you have ever worked with Git on your machine, you can skip this step - Git is already installed
+                    and Rider
+                    will find it automatically.
+                </p>
+                <p>
+                    Otherwise, download Git from the official page
+                    (<a class="externalLink" href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>) and
+                    run the installer.
+                </p>
+                <p>
+                    To make sure that Rider has found the Git executable, go to
+                    <span class="menuItem">Version Control | Git</span>
+                    settings page. In most cases, you will see the detected path, but
+                    if your system environment is customized and the Git path is empty, specify the path manually.
+                    Once you have the correct path, click <span class="menuItem">Test</span>.
+                </p>
+
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics1.mp4"/>
+                    </video>
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Create a Git repository
+                </h1>
+                <p>
+                    To version your solution with Git,
+                    you need to create a Git repository at the root directory of your solution.
+                    Rider can do that for you.
+                </p>
+
+                <ol>
+                    <li>
+                        Choose
+                        <span class="menuItem">VCS | Enable Version Control Integration</span>
+                        from the menu.
+                    </li>
+                    <li>
+                        Select
+                        <span class="menuItem">Git</span>
+                        as the version control system and click <span class="menuItem">OK</span>.
+                    </li>
+                </ol>
+
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics2.mp4"/>
+                    </video>
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Decide what to version and what to ignore
+                </h1>
+                <p>
+                    As soon as your solution is associated with a Git repository, you can start versioning your code.
+                    But first, add files and directories that you don't want to version to the ignore list. These
+                    normally include
+                    <code>bin</code>
+                    and
+                    <code>obj</code>
+                    project directories as well as
+                    <code>DotSettings.user</code>
+                    file with user-specific settings.
+                    <br/>
+                    It is recommended to version - that is, not to ignore -
+                    project settings files that you see under the <code>.idea</code> directory.
+                    <br/>
+                    The list of ignored files and directories can be saved in a
+                    <code>.gitignore</code>
+                    file in the solution root and then this file should be added to VCS so that the list
+                    of ignored items can be shared with your team.
+                </p>
+                <ol>
+                    <li>
+                        Open the
+                        <span class="menuItem">Commit</span>
+                        window.
+                        You will see all your project files under <span class="menuItem">Unversioned Files</span>.
+                    </li>
+                    <li>
+                        Group the files by directory to visualize your directory structure.
+                    </li>
+                    <li>
+                        Right-click a directory that you want to ignore, and choose
+                        <span class="menuItem">Add to .gitignore</span>.
+                    </li>
+                    <li>
+                        Rider will suggest creating a new
+                        <code>.gitignore</code>
+                        file. Accept this suggestion.
+                    </li>
+                    <li>
+                        Then Rider will suggest adding the
+                        <code>.gitignore</code>
+                        file to VCS, accept that too.
+                    </li>
+                    <li>
+                        Make sure that the list of unversioned files doesn't contain any files that you want to ignore.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics3.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="5">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Commit your changes
+                </h1>
+                <p>
+                    Unversioned files are not tracked. To log the addition of a new file in Git,
+                    you need to add the file (or, using the Git terms, stage it) and then commit it to the repository.
+                    In Rider, you can do these two things as one command - that is, you can commit unstaged files -
+                    but we'll do that with two separate commands to better understand file states.
+                </p>
+                <ol>
+                    <li>
+                        In the previous step, we staged the
+                        <code>.gitignore</code>
+                        file, so you can find it under the
+                        <span class="menuItem">Changes</span>
+                        node.
+                        Notice that staged and unstaged files are grouped in differnt nodes and have different colors.
+                    </li>
+                    <li>
+                        Right-click the solution diretory under the
+                        <span class="menuItem">Unversioned Files</span>
+                        node and choose
+                        <span class="menuItem">Add to VCS</span>
+                        from the context menu, or press
+                        <shortcut>Git.Add</shortcut>.
+                    </li>
+                    <li>
+                        Notice the change of colors and grouping.
+                    </li>
+                    <li>
+                        Type a meaningful commit message at the bottom of the view and do not forget to select
+                        what should be committed - in our case, it's the entire
+                        <span class="menuItem">Changes</span>
+                        node.
+                    </li>
+                    <li>
+                        Click
+                        <span class="menuItem">Commit</span>
+                        -
+                        this will log the snapshot of the current solution state
+                        in Git and we'll be able to return to this snapshot at any time in the future.
+                    </li>
+                    <li>
+                        You will see that there are no more untracked changes - everything is saved in your Git
+                        repository.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics4.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Tracking changes
+                </h1>
+                <p>
+                    When your code is under a VCS, you can always see what and how is changing.
+                </p>
+                <ol>
+                    <li>Make an edit and you will notice a blue gutter mark notifying you that the line is changed.</li>
+                    <li>
+                        Click the gutter mark to see what was different before the change. You can click
+                        <span class="menuItem">Rollback Lines</span>
+                        to revert the edit.
+                    </li>
+                    <li>
+                        All tracked and modified files will appear in blue in the
+                        <span class="menuItem">Commit</span>
+                        window.
+                        You can click files to open the diff preview and study the changes.
+                    </li>
+                    <li>
+                        If you are happy with the changes, select the file to commit, type a commit message, and then
+                        click
+                        <span class="menuItem">Commit</span>.
+                    </li>
+                    <li>
+                        You can find all your commits in the
+                        <span class="menuItem">Git</span>
+                        window.
+                    </li>
+                    <li>
+                        When you select a commit in the history, you will see its details and all files changed in this
+                        commit.
+                        Double-click a file changed in the commit to see what exactly was changed in this file.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics5.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialVcsBasics"/>
+            <text>
+                <h1 class="stepTitle">
+                    Distributed storage
+                </h1>
+                <p>
+                    We have now set up our Git repository locally and this already allows us to study the history of
+                    changes
+                    and revert to any of the committed states.
+                </p>
+                <p>
+                    But to get the most out of Git, your local repo should be associated with a remote repo, also called
+                    origin.
+                    This will additionally allow you to keep your code and its history safe if the local repo is
+                    damaged,
+                    and most importantly, to collaborate with others working on the same project.
+                </p>
+                <p>
+                    Let's use GitHub - arguably the most popular Git hosting service - to create a remote repo for our
+                    example.
+                </p>
+                <ol>
+                    <li>
+                        Log in to github.com (you can create a free account if you don't have one)
+                        and switch to the <span class="menuItem">Repositories</span> view.
+                    </li>
+                    <li>
+                        Click <span class="menuItem">New</span>, specify any name for your repo, and then click
+                        <span class="menuItem">Create Repository</span>.
+                    </li>
+                    <li>
+                        When the repo is created, you will see its URL. Click the button next to it to copy it to the
+                        clipboard.
+                    </li>
+                    <li>
+                        Going back to Rider, choose
+                        <span class="menuItem">Git | Manage Remotes</span>
+                        from the menu and add a new remote using the GitHub URL you copied.
+                    </li>
+                    <li>
+                        Choose <span class="menuItem">Git | Push</span> from the menu or press
+                        <shortcut>Vcs.Push</shortcut>.
+                        In the dialog that opens, you can review the list of commits you're pushing. Click
+                        <span class="menuItem">Push</span>
+                        in the dialog to transfer them to the remote.
+                    </li>
+                    <li>
+                        In the dialog that opens, click
+                        <span class="menuItem">Log In via GitHub</span>
+                        -
+                        Rider will redirect you to the JetBrains website where you can authorize Rider to access the
+                        GitHub repository.
+                    </li>
+                    <li>
+                        Return to Rider and make sure that the push was successful.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.VCSBasics6.mp4"/>
+                    </video>
+                </p>
+                <p>
+                    Now you can use the GitHub repository URL to access your code from other machines
+                    and to share your project with others.
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="8">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial! Take a look at other tutorials that cover
+                    basic Rider functionality.
+                </p>
+                <button id="backButton">Back</button>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>

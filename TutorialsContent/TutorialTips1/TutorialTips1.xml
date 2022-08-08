@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Rider Tips. Typing Assistance</title>
+
+    <steps>
+        <step li="1">
+            <text>
+                <h1 class="stepTitle">
+                    Welcome!
+                </h1>
+                <p>
+                    Rider is huge, really HUGE! Even if Rider creators hardly know all of its abilities,
+                    then what to say about ordinary users, who typically use no more than 10% of the whole feature set.
+                    With this tutorial series, we will try to fix this and tell you about some Rider goodies that you
+                    probably are not aware of. In this tutorial, let's talk about typing assistance and some
+                    other handy editor features.
+                </p>
+                <p>
+                    IMPORTANT NOTES:
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            Make sure <span class="menuItem">Match case</span> is disabled in
+                            Rider settings <span class="menuItem">Editor | General | Code Completion</span>.
+                        </li>
+                        <li>
+                            If you're using IdeaVim or other plugins that modify keyboard input, please disable them.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            The tutorial is interactive:
+                            <ul>
+                                <li>It consists of a number of steps.</li>
+                                <li>Each step is a series of actions you should perform.</li>
+                                <li>Your progress is checked automatically.</li>
+                                <li>If you want to exit from the tutorial, simply close the tutorial solution.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2" skipToStepId="4">
+            <navigate project="RdTips1" file="Templates.cs"
+                      type="RdTips1.Address" textToFind="city"
+                      textToFindOccurrence="2"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep2"/>
+            <text>
+                <h1 class="stepTitle">
+                    Postfix templates
+                </h1>
+                <p>
+                    Let's start with templates. We're pretty sure you know about live code templates for frequently-used
+                    code blocks,
+                    like <code>if</code>, <code>for</code>, constructors, properties, and others. But did you know that
+                    there are also
+                    a bunch of templates that could work in a postfix manner?
+                </p>
+                <p>
+                    For example, you can quickly add a null check for an object. Let's check
+                    <code>city</code>
+                    for null:
+                    <ol>
+                        <li>
+                            The caret should be after
+                            <code>
+                                <a href="www.jetbrains.com" class="navigate">city</a>
+                            </code>
+                            .
+                        </li>
+                        <li>
+                            Type
+                            <span class="shortcut">.</span>
+                        </li>
+                        <li>
+                            Start typing <span class="userInput">null</span> and select <span class="menuItem">null
+                        </span> in the list.
+                        </li>
+                        <li>
+                            Press <span class="shortcut">Enter</span> or <span class="shortcut">Tab</span>.
+                        </li>
+                    </ol>
+                </p>
+            </text>
+        </step>
+
+        <step li="3" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Postfix templates</h1>
+                <p>
+                    You're doing great!
+                </p>
+                <p>
+                    Let's try one more template in action.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4" skipToStepId="6">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep4"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep4"/>
+            <text>
+                <h1 class="stepTitle">Postfix templates</h1>
+                <p>
+                    For example, we want to iterate over key value pair in the <code>people</code> dictionary
+                    using <code>foreach</code>:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be after
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">people</a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Type
+                        <span class="shortcut">.</span>
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">foreach</span>.
+                    </li>
+                    <li>
+                        Select
+                        <span class="menuItem">foreach</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="5" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Postfix templates</h1>
+                <p>
+                    Done!
+                </p>
+                <p>
+                    But we're not yet over with templates.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6" skipToStepId="8">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep6"/>
+            <check action="Frontend.NextTemplateVariable;Frontend.EditorChooseLookupItem;Frontend.EditorChooseLookupItemReplace"
+                   method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep6"/>
+            <text>
+                <h1>Surround templates</h1>
+                <p>
+                    Imagine a typical situation: you have some code that you want to wrap
+                    into, say, <code>if</code> or <code>using</code>. Yes, there're surround templates and a shortcut
+                    for them,
+                    but in most cases you don't need it!
+                    Simply select the code and start typing the template name. And don't worry that your code has
+                    dissapeared: after
+                    you select a template, it'll return back surrounded with required statements. Let's try this. For
+                    example,
+                    we want to execute the selected code only if <code>person</code> is not null.
+                </p>
+                <ol>
+                    <li>
+                        The <a href="www.jetbrains.com" class="navigate">code you want to surround</a> must be selected.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">if</span> and select
+                        <span class="menuItem">if</span>
+                        from the list by hitting <span class="shortcut">Tab</span> or <span class="shortcut">
+                        Enter</span>.
+                    </li>
+                    <li>
+                        Type <code>person != null</code> as a condition.
+                    </li>
+                    <li>
+                        Press <span class="shortcut">Tab</span> or <span class="shortcut">Enter</span> to finish
+                        creating the template.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="7" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Surround templates</h1>
+                <p>
+                    That's it! Note that all surround templates can work in the same way.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="8" skipToStepId="10">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep8"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep8"/>
+            <text>
+                <h1 class="stepTitle">Statement body assist</h1>
+                <p>
+                    One more cool typing assist feature is statement body assist. It allows you to quickly convert an
+                    expression body of a property, method, or local
+                    function into a statement body. All you need to do is type <code>{</code> anywhere around the <code>
+                    =></code>. For example:
+                </p>
+                <ol>
+                    <li>
+                        The caret can be placed before
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">=></a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Type
+                        <span class="userInput">{</span>
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="9" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Statement body assist</h1>
+                <p>
+                    Awesome!
+                </p>
+                <p>
+                    Let's move on to other cool assists.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="10" skipToStepId="15">
+            <navigate project="RdTips1" file="AssistsFlow.cs"
+                      type="RdTips1.StringUtils" textToFind="myStringBuilder" textToFindOccurrence="2"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep10"/>
+            <text>
+                <h1 class="stepTitle">Smart behaviour of dot and semicolon</h1>
+                <p>
+                    By default, when you choose a method in the completion list, Rider automatically
+                    adds parentheses and sets your caret between them in the position to start typing arguments.
+                    This is super-useful in case you want to chain-call other methods. Let's try a bunch of assists in a
+                    row.
+                </p>
+                <p>
+                    For example, we want our method to return a string with a new line appended. Imagine that you've
+                    just typed
+                    <code>myStringBuilder</code>:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be after
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">myStringBuilder</a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Type
+                        <span class="shortcut">.</span>
+                    </li>
+                    <li>
+                        Start typing
+                        <span class="userInput">AppendLine</span>
+                    </li>
+                    <li>
+                        Select
+                        <span class="menuItem">AppendLine</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="11" skipToStepId="15">
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep11"/>
+            <text>
+                <h1 class="stepTitle">Smart behaviour of dot and semicolon</h1>
+                <p>
+                    Now, we want to explicitly convert the result to string.
+                </p>
+                <ol start="5">
+                    <li>
+                        The caret is inside the parentheses <code>()</code>.
+                    </li>
+                    <li>
+                        Type
+                        <span class="shortcut">.</span>
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="12" skipToStepId="15">
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep12"/>
+            <text>
+                <h1 class="stepTitle">Smart behaviour of dot and semicolon</h1>
+                <p>
+                    As you can see, the dot <code>.</code> has been moved out of parentheses. Let's continue the line:
+                </p>
+                <ol start="7">
+                    <li>
+                        Start typing <span class="userInput">tostring</span> and select
+                        <span class="menuItem">ToString</span>
+                        from the list by hitting <span class="shortcut">Tab</span> or <span class="shortcut">
+                        Enter</span>.
+                    </li>
+                    <li>Note that the caret is inside the parentheses.</li>
+                    <li>Type
+                        <span class="shortcut">;</span>
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="13" skipToStepId="15">
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep13"/>
+            <text>
+                <h1 class="stepTitle">Smart behaviour of dot and semicolon</h1>
+                <p>
+                    As you can see, the semicolon <code>;</code> has been moved out of parentheses.
+                    Now, we want the method to return this string. Let's use a postfix template for this:
+                </p>
+                <ol start="10">
+                    <li>
+                        Type
+                        <span class="shortcut">.</span>
+                    </li>
+                    <li>Note that the dot appeared <i>before</i> the semicolon.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">return</span> and select
+                        <span class="menuItem">return</span>
+                        from the list by hitting <span class="shortcut">Tab</span> or <span class="shortcut">
+                        Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="14" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Smart behaviour of dot and semicolon</h1>
+                <p>
+                    That's it! <code>return</code> has been moved to the beginning of the line.
+                </p>
+                <p>
+                    But that's enough with typing assists. Let's check out some other editor goodies.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="15" skipToStepId="16">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep15"/>
+            <check action="Frontend.ShowIntentionActions"
+                   method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep15"/>
+            <text>
+                <h1 class="stepTitle">Built-in spell checking</h1>
+                <p>
+                    Did you know that Rider is able to highlight typos and suggest quick-fixes?
+                </p>
+                <p>
+                    This works everywhere in your code. For example, let's fix the typo in the comments:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on the
+                        <a href="www.jetbrains.com" class="navigate">mistyped word</a>.
+                    </li>
+                    <li>
+                        Press <shortcut>EditPropertiesAction</shortcut>.
+                    </li>
+                    <li>
+                        Select
+                        <span class="menuItem">Typo in "initializier". Replace with...</span>.
+                    </li>
+                    <li>
+                        In the list, select <span class="menuItem">initializer</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="16" skipToStepId="18">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep16"/>
+            <check action="Frontend.ShowIntentionActions"
+                   method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep16"/>
+            <text>
+                <h1 class="stepTitle">Built-in spell checking</h1>
+                <p>Nice! In addition, when you fix a typo in an identifier, ReSpeller
+                    automatically fires off the <b>Rename refactoring</b>, making sure that your spelling correction
+                    doesn't lead to any inconsistencies.
+                </p>
+                <p>
+                    For example, let's fix the typo in the <code>WrapsPostiveNumber</code> field:
+                    <ol>
+                        <li>
+                            The caret must be on the mistyped word inside the
+                            <code>
+                                <a href="www.jetbrains.com" class="navigate">WrapsPostiveNumber</a>
+                            </code>
+                            field declaration.
+                        </li>
+                        <li>
+                            Press <shortcut>EditPropertiesAction</shortcut>.
+                        </li>
+                        <li>
+                            Select
+                            <span class="menuItem">Typo in "WrapsPostiveNumber". Rename to...</span>.
+                            This will run the refactoring.
+                        </li>
+                        <li>
+                            Using the refactoring window, rename the field to <code>WrapsPositiveNumber</code>.
+                        </li>
+                    </ol>
+                </p>
+            </text>
+        </step>
+
+        <step li="17" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Built-in spell checking</h1>
+                <p>
+                    Great!
+                </p>
+                <p>
+                    What else can the editor offer?
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="18" skipToStepId="21">
+            <navigate project="RdTips1" file="Comments.cs"
+                      type="RdTips1.Customer" textToFind="throw"
+                      textToFindOccurrence="1"/>
+            <check action="LineComment"
+                   method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep18"/>
+            <text>
+                <h1>Commenting code</h1>
+                <p>
+                    Let's talk about code comments. If you want to comment out a line or a code block, no problem,
+                    there's
+                    a shortcut for that. For example, we want to temporarily get rid of the line:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be
+                        <a href="www.jetbrains.com" class="navigate">anywhere in the line</a>
+                        that you want to comment out (if you want to comment out multiple lines, select these lines
+                        before applying the shortcut).
+                    </li>
+                    <li>
+                        Press <shortcut>CommentByLineComment</shortcut>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="19" skipToStepId="21">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep19"/>
+            <check action="Frontend.ShowIntentionActions"
+                   method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep19"/>
+            <text>
+                <h1>Uncommenting code</h1>
+                <p>Great! To uncomment a line, you can either apply the
+                    <shortcut>CommentByLineComment</shortcut>
+                    shortcut or use a context action. Let's try the latter:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be <a href="www.jetbrains.com" class="navigate">anywhere inside the comment</a>.
+                    </li>
+                    <li>
+                        Press <shortcut>EditPropertiesAction</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Uncomment</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="20" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Uncommenting code</h1>
+                <p>
+                    Awesome!
+                </p>
+                <p>Note that there's also a context action for deleting comments.</p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="21" skipToStepId="23">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep21"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep21"/>
+            <text>
+                <h1 class="stepTitle">Splitting comments with Enter</h1>
+                <p>
+                    What else can you do with comments? Split them if they are too long!
+                    Hitting <span class="shortcut">Enter</span> inside a comment splits it into two comments.
+                </p>
+                <p>
+                    Let's put this in action:
+                </p>
+                <ol>
+                    <li>
+                        The caret can be anywhere
+                        <a href="www.jetbrains.com" class="navigate">inside the comment</a>.
+                    </li>
+                    <li>
+                        Press <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="22" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Splitting comments with Enter</h1>
+                <p>
+                    That was easy! The new line is instantly commented out.
+                    Now, let's take a look at the topic that lies close to code comments.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="23" skipToStepId="25">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.TutorialTips1Navigation.NavigateStep23"/>
+            <check method="JetBrains.RiderTutorials.Checker.TutorialTips1Checks.CheckStep23"/>
+            <text>
+                <h1 class="stepTitle">Documentation comments</h1>
+                <p>
+                    With Rider you can quickly create documentation comments for a given method, property, or other
+                    symbol.
+                </p>
+                <p>
+                    For example, let's add a description to the <code>Customer</code> constructor:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be above the
+                        <a href="www.jetbrains.com" class="navigate">member</a>
+                        you want to document.
+                    </li>
+                    <li>
+                        Type <code>///</code>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="24" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Documentation comments</h1>
+                <p>
+                    Great! All you have to do is add required descriptions.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="25">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    That's all! We hope that tips and tricks from this tutorial will help you in your work.
+                </p>
+                <button id="close">Close</button>
+            </text>
+        </step>
+
+    </steps>
+
+</tutorial>

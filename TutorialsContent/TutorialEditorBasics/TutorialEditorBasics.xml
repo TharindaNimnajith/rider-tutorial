@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Editor Essentials</title>
+
+    <steps>
+        <step li="1">
+            <text>
+                <h1 class="stepTitle">
+                    Rider Editor Essentials
+                </h1>
+                <p>
+                    Welcome to the first interactive tutorial! It will help you get started with the most important
+                    Rider code
+                    editor features.
+                    Please read the notes below before you start the tutorial.
+                </p>
+                <p>
+                    IMPORTANT NOTES:
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            If you're using IdeaVim or other plugins that modify keyboard input, please disable them.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            The tutorial is interactive:
+                            <ul>
+                                <li>It consists of a number of steps.</li>
+                                <li>Each step is a series of actions you should perform.</li>
+                                <li>Your progress is checked automatically.</li>
+                                <li>If you want to exit from the tutorial, simply close the tutorial solution.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2" isNextStepShortcutEnabled="true">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep2"/>
+            <text>
+                <h1 class="stepTitle">
+                    Alt+Enter
+                </h1>
+                <p>
+                    This is by far the <strong>most important shortcut</strong> in Rider.
+                    It's used to apply quick-fixes to inspections, context-specific actions
+                    depending on the location of the caret, and more.
+                    Rider always gives you a clue when <shortcut>EditPropertiesAction</shortcut> can be applied:
+                    <ul>
+                        <li>
+                            A <span class="squiggly">squiggly</span> line under a code element.
+                        </li>
+                        <li>
+                            An icon displayed in the left-side gutter margin, e.g.:
+                            <ul>
+                                <li>
+                                    <img src="YellowBulb.16x16.png"/>
+                                    Yellow lightbulb, to fix a warning
+                                </li>
+                                <li>
+                                    <img src="RedBulb.16x16.png"/>
+                                    Red lightbulb, to fix an error
+                                </li>
+                                <li>
+                                    <img src="ContextAction.16x16.png"/>
+                                    Hammer, for a context action
+                                </li>
+                                <li>and more.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3" skipToStepId="4">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.UnusedClass"/>
+            <check action="Frontend.ShowIntentionActions"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step3"/>
+            <text>
+                <h1 class="stepTitle">Apply a quick-fix for an inspection</h1>
+                <p>
+                    The <code>UnusedClass</code> class is not used anywhere in our code.
+                    Let's remove it:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">UnusedClass</a>
+                        </code>
+                        . Note the
+                        <img src="YellowBulb.16x16.png"/>
+                        lightbulb in the left-side margin.
+                    </li>
+                    <li>
+                        Press <shortcut>EditPropertiesAction</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Remove unused class</span> and click
+                        <span class="menuItem">Next</span>
+                        in the opened window to apply the fix.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="4" skipToStepId="5">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.ContextAction" method="ReturnMessage" textToFind="msg"
+                      textToFindOccurrence="2"/>
+            <check action="Frontend.ShowIntentionActions"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step4"/>
+            <text>
+                <h1 class="stepTitle">Apply context action</h1>
+                <p>
+                    Same with context actions. If there is a possible context action, Rider will mark the
+                    line with the hammer icon in the gutter. For example, we want to check the <code>msg</code> argument
+                    of the <code>ReturnMessage()</code> method for <code>null</code>:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">msg</a>
+                        </code>
+                        argument usage. Note the
+                        <img src="ContextAction.16x16.png"/>
+                        hammer icon.
+                    </li>
+                    <li>
+                        Press <shortcut>EditPropertiesAction</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Check expression for null</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="5" skipToStepId="7">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.FindAction"/>
+            <check action="Rename"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step5"/>
+            <text>
+                <h1 class="stepTitle">Find and apply an action</h1>
+                <p>
+                    You can also use <shortcut>EditPropertiesAction</shortcut> to run any Rider command. For example,
+                    let's use it to rename a class.
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">FindAction</a>
+                        </code>
+                        class name.
+                    </li>
+                    <li>
+                        Press <shortcut>EditPropertiesAction</shortcut>.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">rename</span>.
+                    </li>
+                    <li>
+                        In the list, select <span class="menuItem">Rename...</span>.
+                    </li>
+                    <li>
+                        Rename the class to <code>Renamed</code>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="6" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Alt+Enter</h1>
+                <p>
+                    Note how many different types of actions we've performed with only one shortcut.
+                    But enough for today with <shortcut>EditPropertiesAction</shortcut>!
+                    Let's look at other cool Rider features. Next up are <strong>Predefined live templates</strong>.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep7"/>
+            <check action="Frontend.NextTemplateVariable"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step7"/>
+            <text>
+                <h1 class="stepTitle">Create a class</h1>
+                <p>
+                    Live templates are code fragments that can be quickly inserted into your code: expressions,
+                    complete constructs, or even entire classes or methods.
+                </p>
+                <p>
+                    To insert a template, you first enter a short abbreviation and then expand it into
+                    the full piece of code. Let's quickly create a new class using a live template.
+                </p>
+                <ol>
+                    <li>
+                        The caret should be on <a href="www.jetbrains.com" class="navigate">some free place</a> where
+                        a new class can be created.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">class</span>.
+                    </li>
+                    <li>
+                        After the list focuses on <span class="menuItem">class</span>, press
+                        <span class="shortcut">Tab</span>
+                        or <span class="shortcut">Enter</span>.
+                    </li>
+                    <li>
+                        Enter <code>MyCircle</code> as a class name. Note the frame around <code class="frame">
+                        MyCircle</code>,
+                        indicating the active template parameter.
+                    </li>
+                    <li>
+                        Press <span class="shortcut">Tab</span> to finish creating the class.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="8">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep8_12_16_18"/>
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step8"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Let's add properties to the class. As this class represents a circle,
+                    it should have some <code>Radius</code> property of the <code>int</code> type:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on a <a href="www.jetbrains.com" class="navigate">new line inside the
+                        class</a>.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">prop</span>.
+                    </li>
+                    <li>
+                        After the list focuses on <span class="menuItem">prop</span>,
+                        press <span class="shortcut">Tab</span> or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="9">
+            <check action="Frontend.EditorChooseLookupItemReplace;Frontend.EditorChooseLookupItem"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step9"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Note that the <span class="menuItem">prop</span> template has two editable parameters,
+                    the property's type and its name.
+                    The one that is active for input is marked with a red frame – <code class="frame">TYPE</code>.
+                    Our <code>Radius</code> property will have the <code>int</code> type:
+                </p>
+                <ol>
+                    <li>
+                        Start typing <span class="userInput">int</span>.
+                    </li>
+                    <li>
+                        After the list focuses on <span class="menuItem">int</span>,
+                        press <span class="shortcut">Tab</span> or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="10">
+            <check action="Frontend.NextTemplateVariable"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step10"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Move input to the next parameter:
+                </p>
+                <ol start="3">
+                    <li>
+                        Press <span class="shortcut">Tab</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="11">
+            <check action="Frontend.NextTemplateVariable;Frontend.EditorChooseLookupItem;Frontend.EditorChooseLookupItemReplace"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step11"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Now, we should specify the property name:
+                </p>
+                <ol start="4">
+                    <li>
+                        Type <span class="userInput">Radius</span>.
+                    </li>
+                    <li>
+                        Press <span class="shortcut">Tab</span> or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="12">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep8_12_16_18"/>
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step12"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Now, let's add another property of the <code>CenterCoordinates</code> type for
+                    the coordinates of the circle center.
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on a <a href="www.jetbrains.com" class="navigate">new line inside the
+                        class</a>.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">prop</span>.
+                    </li>
+                    <li>
+                        After the list focuses on <span class="menuItem">prop</span>, press
+                        <span class="shortcut">Tab</span>
+                        or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="13">
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step13"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <ol start="4">
+                    <li>
+                        Rider supports camelhumps. Simply type <span class="userInput">ccoo</span>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">CenterCoordinates</span> in the list and press
+                        <span class="shortcut">Tab</span>
+                        or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="14">
+            <check action="Frontend.NextTemplateVariable"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step14"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>
+                    Move input to the next parameter:
+                </p>
+                <ol start="3">
+                    <li>
+                        Press <span class="shortcut">Tab</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="15">
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step15"/>
+            <text>
+                <h1 class="stepTitle">Create a property</h1>
+                <p>Let's leave the suggested <code>CenterCoordinates</code> name as is.
+                </p>
+                <ol start="4">
+                    <li>
+                        Select <span class="menuItem">CenterCoordinates</span> in the list.
+                    </li>
+                    <li>
+                        Press <span class="shortcut">Tab</span> or
+                        <span class="shortcut">Enter</span>
+                        to finish creating the property.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="16">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep8_12_16_18"/>
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step16"/>
+            <text>
+                <h1 class="stepTitle">Create a constructor</h1>
+                <p>
+                    Our <code>MyCircle</code> class is missing a constructor. There's one more live
+                    template that allows adding the constructor and initializing class properties:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on a <a href="www.jetbrains.com" class="navigate">new line inside the
+                        class</a>.
+                    </li>
+                    <li>
+                        Start typing <span class="userInput">ctorp</span>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">ctorp</span> in the list and press
+                        <span class="shortcut">Tab</span>
+                        or <span class="shortcut">Enter</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="17" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Predefined live templates</h1>
+                <p>
+                    That was fast, wasn't it? Rider has more predefined templates for all occasions: <code>if</code> and
+                    <code>else</code>,
+                    <code>for</code>
+                    and <code>foreach</code>, <code>do...while</code>, <code>try...catch</code>,
+                    <code>using</code>, and many more. Simply start typing the construct you need,
+                    press <span class="shortcut">Tab</span>, and Rider will do the rest.
+                </p>
+                <p>
+                    For the full list of available live templates, click
+                    <a class="externalLink"
+                       href="https://www.jetbrains.com/help/resharper/Reference__Templates_Explorer__Live_Templates.html">
+                        here</a>.
+
+                    Now, let's check other code generation capabilities that Rider has to offer.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="18">
+            <navigate runMethod="JetBrains.RiderTutorials.CodeNavigator.Tutorial1Navigation.NavigateStep8_12_16_18"/>
+            <check action="Generate"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step18"/>
+            <text>
+                <h1 class="stepTitle">Code generation. Equality members</h1>
+                <p>
+                    What you should know about <strong>code generation</strong>: The main shortcut here is <shortcut>
+                    Generate</shortcut>.
+                    It opens a list of all code generation options possible in the current context.
+                </p>
+                <p>
+                    E.g., to guarantee the value equality for the <code>MyCircle</code> type, we want to implement
+                    <code>Equals()</code>
+                    and <code>GetHashCode()</code> methods based on the
+                    <code>Radius</code>
+                    and <code>CenterCoordinates</code> properties:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be inside the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">MyCircle</a>
+                        </code>
+                        class where you want to add new code.
+                    </li>
+                    <li>
+                        Press <shortcut>Generate</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Equality members</span>.
+                    </li>
+                    <li>
+                        In the dialog, select both the <code>Radius</code> and <code>CenterCoordinates</code> properties
+                        and click <span class="menuItem">OK</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="19" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Code generation. Equality members</h1>
+                <p>
+                    Awesome!
+                </p>
+                <p>That's enough code generation for now. Let's move on to Rider's refactoring features.</p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="20">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.MyCircle"/>
+            <check action="RefactorThis"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step20"/>
+            <text>
+                <h1 class="stepTitle">Refactorings. Move to another file</h1>
+                <p>
+                    The main shortcut that stands for all possible
+                    <strong>refactoring actions</strong>
+                    is <shortcut>Refactorings.QuickListPopupAction</shortcut>.
+                </p>
+                <p>
+                    For example, we want to move our newly created <code>MyCircle</code> class to a new file:
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on the declaration of
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">MyCircle</a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Press <shortcut>Refactorings.QuickListPopupAction</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Move to Another File</span> and move the class to
+                        <span class="userInput">MyCircle.cs</span>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="21" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Refactorings. Move to another file</h1>
+                <p>
+                    Easy, right?
+                    <a class="externalLink"
+                       href="https://www.jetbrains.com/help/resharper/Main_Set_of_Refactorings.html">Here
+                    </a>
+                    you can read about all the other types of refactorings available in Rider.
+                </p>
+                <p>Now, let's see what navigation capabilities Rider has in store.</p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="22">
+            <navigate project="Essentials" file="MyCircle.cs"
+                      type="Tutorial1_EssentialShortcuts.MyCircle" textToFind="CenterCoordinates"
+                      textToFindOccurrence="1"/>
+            <check method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step2226"/>
+            <text>
+                <h1 class="stepTitle">Go to Declaration</h1>
+                <p>
+                    With Rider, you can easily find your way through the source code. You can navigate to
+                    specific declarations, members, method calls, inheritance hierarchy, errors, and more.
+                    Let's see how this works.
+                </p>
+                <p>
+                    We want to take a look at the <code>CenterCoordinates</code> class declaration. Let's
+                    navigate to it.
+                </p>
+                <ol>
+                    <li>
+                        Press and hold <span class="shortcut">Ctrl</span> (<span class="shortcut">&#8984;</span> on
+                        Mac), and click on the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">CenterCoordinates</a>
+                        </code>
+                        type in the property declaration.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="23">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.CenterCoordinates"/>
+            <check action="FindUsages"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step23"/>
+            <text>
+                <h1 class="stepTitle">Find usages</h1>
+                <p>
+                    We would like to find out where else the CenterCoordinates class is used.
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">CenterCoordinates</a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Press <shortcut>FindUsages</shortcut>.
+                    </li>
+                    <li>
+                        In the <span class="menuItem">Find Results</span> window, double-click
+                        <code>private CenterCoordinates _coordinates</code>
+                        to navigate to the first
+                        usage of the class.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="24">
+            <check action="Frontend.SearchEverywhere"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step24"/>
+            <text>
+                <h1 class="stepTitle">Go to everything</h1>
+                <p>
+                    Great! Now we want to navigate back to <code>MyCircle</code>. Let's do this by using
+                    the super-helpful
+                    <span class="menuItem">Go to everything</span>
+                    <span class="shortcut">Shift, Shift</span>
+                    shortcut.
+                    It allows you to navigate to any type, symbol, file, recent edit or file, or recently viewed method.
+                </p>
+                <ol>
+                    <li>
+                        Anywhere in the code, press <span class="shortcut">Shift, Shift</span>.
+                    </li>
+                    <li>
+                        Type <span class="userInput">mc</span> in the opened menu.
+                    </li>
+                    <li>
+                        Select <code>MyCircle</code> in the list and navigate to it.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="25" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Navigate to</h1>
+                <p>
+                    You're doing great! Let's learn the last important navigation shortcut to finish off
+                    this topic. It may well become your most used navigation shortcut.
+                    <span class="menuItem">Navigate To</span>
+                    <shortcut>ReSharperNavigateTo</shortcut>
+                    shows a context-dependent drop-down
+                    list with all the possible navigation destinations.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="26">
+            <navigate project="Essentials" file="MyCircle.cs"
+                      type="Tutorial1_EssentialShortcuts.MyCircle" textToFind="CenterCoordinates"
+                      textToFindOccurrence="1"/>
+            <check action="NavigateTo"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step2226"/>
+            <text>
+                <h1 class="stepTitle">Navigate to</h1>
+                <p>
+                    Let's jump back to the declaration of <code>CenterCoordinates</code>, but this time
+                    using <span class="menuItem">Navigate To</span>.
+                </p>
+                <ol>
+                    <li>
+                        The caret must be on the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">CenterCoordinates</a>
+                        </code>
+                        type in the property declaration.
+                    </li>
+                    <li>
+                        Press <shortcut>ReSharperNavigateTo</shortcut>.
+                    </li>
+                    <li>
+                        Select <span class="menuItem">Declaration</span> in the list to navigate to the type
+                        declaration.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="27" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Rearranging code elements</h1>
+                <p>
+                    The next thing we want you to know is how to quickly rearrange code elements.
+                    Four simple shortcuts: <shortcut>MoveElementLeft</shortcut>,
+                    <shortcut>MoveElementRight</shortcut>,
+                    <shortcut>MoveStatementUp</shortcut>, and
+                    <shortcut>MoveStatementDown</shortcut>
+                    are there to help you quickly rearrange expressions, statements, type members, and other elements in
+                    your code.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="28">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.ContextAction" textToFind="msg" textToFindOccurrence="1"/>
+            <check action="MoveRight"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step28"/>
+            <text>
+                <h1 class="stepTitle">Rearranging code elements</h1>
+                <p>
+                    For example, we want to make <code>msg</code> the second argument in the
+                    <code>ReturnMessage</code>
+                    method.
+                </p>
+                <ol>
+                    <li>
+                        Place the caret on
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">msg</a>
+                        </code>
+                        .
+                    </li>
+                    <li>
+                        Press <shortcut>MoveElementRight</shortcut>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="29">
+            <navigate project="Essentials" file="Essentials.cs"
+                      type="Tutorial1_EssentialShortcuts.ContextAction" textToFind="msg" textToFindOccurrence="1"/>
+            <check action="MoveUp"
+                   method="JetBrains.RiderTutorials.Checker.Tutorial1Checks.CheckTutorial1Step29"/>
+            <text>
+                <h1 class="stepTitle">Rearranging code elements</h1>
+                <p>
+                    Now, we want to move <code>ReturnMessage</code> up, above the <code>ReturnCoordinates()</code> method.
+                </p>
+                <ol>
+                    <li>
+                        The caret may be anywhere in the
+                        <code>
+                            <a href="www.jetbrains.com" class="navigate">ReturnMessage</a>
+                        </code>
+                        method declaration.
+                    </li>
+                    <li>
+                        Press <shortcut>MoveStatementUp</shortcut>.
+                    </li>
+                </ol>
+            </text>
+        </step>
+
+        <step li="30" isNextStepShortcutEnabled="true">
+            <text>
+                <h1 class="stepTitle">Reformatting code</h1>
+                <p>
+                    The last feature we'll show you here is how to reformat code.
+                    The way you use whitespaces and blank lines to arrange code blocks is a key aspect of your
+                    code style. With Rider, you can automatically apply your formatting rules to a piece of
+                    code, by calling up the <shortcut>ReformatCode</shortcut> shortcut.
+                </p>
+                <p>
+                    <a class="externalLink"
+                       href="https://www.jetbrains.com/help/resharper/Enforcing_Code_Formatting_Rules.html#configure">
+                        Here
+                    </a>
+                    you can find out how to configure code formatting rules in detail.
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="31">
+            <navigate project="Essentials" file="BadlyFormattedCode.cs"
+                      type="Tutorial1_EssentialShortcuts.BadlyFormattedCode"/>
+            <check action="RiderReformatCode"/>
+            <text>
+                <h1 class="stepTitle">Reformatting code</h1>
+                <p>
+                    To rearrange the badly formatted code:
+                </p>
+                <ol>
+                    <li>
+                        Press <shortcut>ReformatCode</shortcut> anywhere in the code.
+                    </li>
+                </ol>
+                <p>
+                    NOTE: If you want to reformat only a part of the code, as opposed to the whole file,
+                    select the desired code block before applying the shortcut.
+                </p>
+            </text>
+        </step>
+
+        <step li="32">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial. Of course it showcases only a tiny bit of Rider's
+                    capabilities. More complex and in-depth tutorials are coming soon. Stay tuned!
+                </p>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>

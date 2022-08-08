@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<tutorial>
+    <currentStep>1</currentStep>
+    <title>Get Started with Unit Tests</title>
+
+    <steps>
+        <step li="1">
+            <text>
+                <h1 class="stepTitle">Get Started with Unit Tests</h1>
+                <p>
+                    With Rider, you have all necessary tools for unit testing - from unit test projects templates
+                    through to test results analysis.
+                    In this tutorial, we'll take the NUnit framework as an example, create unit tests,
+                    run them, and see the results.
+                </p>
+                <p>
+                    <b>IMPORTANT NOTES:</b>
+                    <ul>
+                        <li>
+                            <a href="https://dotnet.microsoft.com/download/dotnet/6.0" class="externalLink">.NET 6.0</a>
+                            must be installed on your machine.
+                        </li>
+                        <li>
+                            The tutorial uses its own sample solution, which does not affect your Rider configuration in
+                            any way.
+                        </li>
+                        <li>
+                            Please follow the instructions provided, avoiding actions other than those suggested at each
+                            step.
+                        </li>
+                    </ul>
+                </p>
+                <button class="nextButton" onclick="buttonClick()">Start</button>
+            </text>
+        </step>
+
+        <step li="2">
+            <navigate
+                    runMethod="JetBrains.RiderTutorials.CodeNavigator.VideoTutorialsNavigation.NavigateTutorialUnitTesting"/>
+            <text>
+                <h1 class="stepTitle">Add unit test project</h1>
+                <p>
+                    In our example, we have a solution with a single project called <code>Sandbox</code>,
+                    which has a class that implements a primitive calculator with only two methods:
+                </p>
+                <p>
+                    <code>int Add(int x, int y) => x + y;</code>
+                </p>
+                <p>and</p>
+                <p>
+                    <code>int Subtract(int x, int y) => x - y;</code>
+                </p>
+                <p>
+                    To test our calculator, let's start by creating a project for our unit tests.
+                </p>
+                <ol>
+                    <li>
+                        In the Solution Explorer, right-click the solution node and choose
+                        <span class="menuItem">Add | New Project...</span>
+                    </li>
+                    <li>
+                        Choose the Unit Test Project template.
+                    </li>
+                    <li>
+                        Select NUnit as the project type, and provide some telling name for it, e.g. <code>Tests</code>.
+                    </li>
+                    <li>
+                        When you click <span class="menuItem">Create</span>,
+                        the new test project with all necessary configurations and references will be added to our
+                        solution.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.UnitTesting1.mp4"/>
+                    </video>
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="3">
+            <text>
+                <h1 class="stepTitle">Write your first tests</h1>
+                <p>
+                    In the test project, Rider automatically created a file named
+                    <code>UnitTest1.cs</code>
+                    with a stub
+                    for our first test and opened it for you. We are ready to test our calculator.
+                </p>
+                <p>
+                    Unit testing frameworks include a lot of functions to check how the target code works.
+                    The most straightforward way is to compare function's actual output against the expected value.
+                    NUnit provides
+                    <code>Assert.AreEqual</code>
+                    method for that.
+                </p>
+                <p>
+                    Let's create two tests:
+                </p>
+                <ul>
+                    <li>
+                        <code>PassingTest()</code>
+                        that will compare the result of
+                        <code>Add(2,2)</code>
+                        against <code>4</code>:
+                        <br/>
+                        <code>Assert.AreEqual(4, Calculator.Add(2,2));</code>
+                    </li>
+                    <li>
+                        <code>FailingTest()</code>
+                        that will compare the result of
+                        <code>Add(2,2)</code>
+                        against <code>5</code>:
+                        <br/>
+                        <code>Assert.AreEqual(5, Calculator.Add(2,2));</code>
+                    </li>
+                </ul>
+                <p>
+                    <b>Tip:</b>
+                    When writing new tests in a test class, start typing <code>test</code> and then hit
+                    <shortcut>EditorEnter</shortcut>
+                    - a test method stub will be created from a template.
+                </p>
+                <p>
+                    Of course, in reality you don't need tests that fail on purpose.
+                    Here it will just help us to see what happens when a test fails.
+                </p>
+                <p>
+                    <b>Note:</b>
+                    If you copy-paste these statements to the unit test file, the
+                    <code>Calculator</code>
+                    usages will be highlighted as
+                    unresolved because the
+                    <code>Sandbox</code>
+                    project is not referenced in our test project. You can press
+                    <shortcut>ShowIntentionActions</shortcut>
+                    on a highlighted usage of
+                    <code>Calculator</code>
+                    to add the missing project reference and the required
+                    <code>using</code>
+                    directive.
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="4">
+            <text>
+                <h1 class="stepTitle">Run the tests</h1>
+                <p>
+                    Now that you've written the first tests, let's run them.
+                    You can click the unit test icon next to the test class and choose
+                    <span class="menuItem">Run All</span>
+                    to run all tests in that class.
+                </p>
+                <p>
+                    Rider will start the tests and bring up the Unit Tests window where you can see test progress and
+                    results.
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.UnitTesting2.mp4"/>
+                    </video>
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="5">
+            <text>
+                <h1 class="stepTitle">Analyze test results</h1>
+                <p>
+                    As expected, the <code>PassingTest</code> has passed and the
+                    <code>FailingTest</code>
+                    has failed. Normally, you want to focus on failed tests.
+                </p>
+                <ol>
+                    <li>
+                        Click
+                        <span class="menuItem">Failed Tests</span>
+                        on the toolbar to show failed tests and hide all the others.
+                    </li>
+                    <li>
+                        Check the output to find out why the test is failed. The problem is either in the code being
+                        tested or
+                        (as in our case) in the test itself.
+                    </li>
+                    <li>
+                        Fix the problem and run tests once again. You can click
+                        <span class="menuItem">Rerun Failed Tests</span>
+                        (<shortcut>RiderUnitTestSessionRerunFailedTestsAction</shortcut>)
+                        to rerun only the failed tests - this will save you time if you have plenty of tests.
+                    </li>
+                </ol>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.UnitTesting3.mp4"/>
+                    </video>
+                </p>
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="6">
+            <text>
+                <h1 class="stepTitle">Next steps</h1>
+                <p>
+                    As you write more tests, you may end up having lots of tests in your test project,
+                    or you can even have multiple test projects in your solution.
+                    In such situation, using editor controls (as demonstrated in this tutorial)
+                    will not be the most convenient way to run multiple tests.
+                </p>
+                <p>
+                    Instead, you can locate a solution, project, or any node containing unit tests in the Solution
+                    Explorer,
+                    right-click it and choose
+                    <span class="menuItem">Run Unit Tests</span>.
+                    Or alternatively, you can browse all tests in your solution on the
+                    <span class="menuItem">Explorer</span>
+                    tab of the Unit Tests window and run tests from there:
+                </p>
+                <p>
+                    <video controls="">
+                        <source src="RiderTutorials.UnitTesting4.mp4"/>
+                    </video>
+                </p>
+
+                <button id="backButton">Back</button>
+                <button class="nextButton" onclick="buttonClick()">Next</button>
+            </text>
+        </step>
+
+        <step li="7">
+            <text>
+                <h1 class="stepTitle">That's all!</h1>
+                <p>
+                    Thanks for completing this tutorial! Take a look at other tutorials that cover basic Rider
+                    functionality.
+                </p>
+                <button id="backButton">Back</button>
+                <button id="close">Close</button>
+            </text>
+        </step>
+    </steps>
+
+</tutorial>
